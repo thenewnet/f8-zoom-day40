@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redux</title>
+    <style>
+        button {
+
+            margin: 5px;
+            width: 120px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <label id="label" style="font-size: 30px; font-weight: bold;"></label>
+        <div>
+            <button id="btnIncrease">Increase</button>
+            <button id="btnDecrease">Decrease</button>
+            <button id="btnReset">Reset</button>
+            <button id="btnRemoveListener">Remove Listener</button>
+        </div>
+    </div>
+
+    <script src="./redux.js"></script>
+    <script>
+        const btnIncrease = document.getElementById('btnIncrease');
+        const btnDecrease = document.getElementById('btnDecrease');
+        const btnReset = document.getElementById('btnReset');
+        const btnRemoveListener = document.getElementById('btnRemoveListener');
+        const label = document.getElementById('label');
+
+        const initialState = 0;
+
+        //Reducer
+        const reducer = (state, action) => {
+            switch (action.type) {
+                case 'INCREASE':
+                    return state + 1;
+                case 'DECREASE':
+                    return state - 1;
+                case 'RESET':
+                    return 0;
+
+                default:
+                    return state;
+            }
+        }
+
+        //Tao store
+        const store = MyRedux.createStore(reducer, initialState);
+
+        //Render UI
+        function render() {
+            label.innerText = store.getState();
+        }
+        render();
+
+        unsubscribe = store.subscribe(render);
+
+        //Events
+
+
+        btnIncrease.addEventListener('click', () => {
+            store.dispatch({ type: 'INCREASE' });
+        })
+
+        btnDecrease.addEventListener('click', () => {
+            store.dispatch({ type: 'DECREASE' });
+        })
+
+        btnReset.addEventListener('click', () => {
+            store.dispatch({ type: 'RESET' });
+        })
+
+        btnRemoveListener.addEventListener('click', () => {
+            this.unsubscribe();
+        })
+
+    </script>
+</body>
+
+</html>
