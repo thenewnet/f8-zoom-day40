@@ -1,0 +1,51 @@
+.container {
+    width: 100%;
+
+    .form {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+
+        .taskTitle {
+            display: flex;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            line-height: 30px;
+        }
+
+        .btnWrapper {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            color: #000;
+            cursor: pointer;
+            width: 100px;
+
+            &:hover {
+                background-color: #ccc;
+            }
+        }
+
+        .error {
+            color: red;
+            border: 1px solid red;
+        }
+        .errorMessage {
+            color: white;
+            border: 1px solid red;
+            border-radius: 5px;
+            background-color: #fd6601;
+        }
+
+    }
+}

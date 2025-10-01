@@ -12,8 +12,8 @@ function Header(){
             to: '/'
         },
         {
-            label: 'Redux',
-            to: '/redux'
+            label: 'Tasks',
+            to: '/tasks'
         }
     ]
     return (

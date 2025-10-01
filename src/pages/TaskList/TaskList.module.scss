@@ -1,0 +1,51 @@
+.container {
+    margin-top: 10px !important;
+    padding: 20px;
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-radius: 10px;
+    border: 1px solid #ccc;
+
+    .pageTitleWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    .pageTitle {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .content{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn{
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        color: #000;
+        cursor: pointer;
+
+        &:hover{
+            background-color: #ccc;
+        }
+    }
+
+    .error {
+        color: fff;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid red;
+        background-color: red;
+    }
+}

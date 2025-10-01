@@ -1,7 +1,9 @@
 import { HashRouter, Route, Routes } from "react-router";
-import Redux from "@/pages/redux";
 import Home from "@/pages/Home";
 import DefaultLayout from "@/layouts/DefaultLayout";
+import TaskList from "@/pages/TaskList";
+import NewTask from "@/pages/NewTask";
+import EditTask from "@/pages/EditTask";
 
 const AppRoutes = () => {
 
@@ -11,7 +13,9 @@ const AppRoutes = () => {
             <Routes>
                 <Route element={<DefaultLayout />}>
                     <Route index path="/" element={<Home />} />
-                    <Route path="/redux" element={<Redux />} />
+                    <Route path="/tasks" element={<TaskList />} />
+                    <Route path="/new-task" element={<NewTask />} />
+                    <Route path="/:id/edit" element={<EditTask />} />
                 </Route>
             </Routes>
         </HashRouter>
