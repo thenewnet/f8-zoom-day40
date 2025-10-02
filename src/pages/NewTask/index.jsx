@@ -8,6 +8,8 @@ function NewTask() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const error = useSelector(state => state.error);
+    const isLoading = useSelector(state => state.isLoading);
+
     console.log("New Task render: ", error);
 
     const handleAddTask = async (title) => {
@@ -21,6 +23,10 @@ function NewTask() {
         } else {
             //call api 
             try {
+                dispatch({
+                    type: "SET_LOADING",
+                    payload: true
+                })
                 const data = await fetch("http://localhost:3001/tasks", {
                     method: "POST",
                     headers: {
@@ -42,6 +48,11 @@ function NewTask() {
                     type: "SET_ERROR",
                     payload: error.message
                 })
+            } finally {
+                dispatch({
+                    type: "SET_LOADING",
+                    payload: false
+                })
             }
 
             //clear error
@@ -53,6 +64,10 @@ function NewTask() {
         }
     }
     const handleCancel = () => {
+        dispatch({
+            type: 'SET_ERROR',
+            payload: null
+        })
         navigate('/tasks');
     }
 
@@ -60,7 +75,13 @@ function NewTask() {
         <div className={styles.container}>
             <h1 className={styles.pageTitle}>NewTask</h1>
             <div className={styles.content}>
-                <TaskForm onAddTask={handleAddTask} error={error} onCancel={handleCancel} />
+                <TaskForm
+                    onSubmit={handleAddTask}
+                    onCancel={handleCancel}
+                    submitText={"Add"}
+                    error={error}
+                    isLoading={isLoading}
+                />
             </div>
         </div>
     )

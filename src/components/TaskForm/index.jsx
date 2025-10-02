@@ -1,16 +1,22 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
 import styles from './TaskForm.module.scss';
 
-function TaskForm({ onAddTask, onCancel, error }) {
+function TaskForm({ task, onSubmit, onCancel, error, isLoading, submitText  }) {
 
     const [title, setTitle] = useState('');
+    
+    useEffect(() => {
+        if (task) {
+            setTitle(task.title);
+        }
+    }, [task]);
 
     const handleAddTask = (e) => {
         e.preventDefault();
-        onAddTask(title);
+        onSubmit(title);
     }
 
     return (
@@ -25,7 +31,7 @@ function TaskForm({ onAddTask, onCancel, error }) {
                 {error && <span className={styles.errorMessage}>{error}</span>}
 
                 <div className={styles.btnWrapper}>
-                    <button className={styles.btn} type="submit">Add</button>
+                    <button className={styles.btn} type="submit" disabled={isLoading}>{ submitText }</button>
                     <button className={styles.btn} type="button" onClick={onCancel}>Cancel</button>
                 </div>
             </form>

@@ -1,9 +1,8 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "title": "Quét nhà",
-      "completed": false
+      "title": "Quét nhà ",
+      "id": "1"
     },
     {
       "id": "2",
@@ -19,6 +18,10 @@
       "id": "4",
       "title": "Làm bài tập",
       "completed": false
+    },
+    {
+      "title": "Chơi thể thao ok",
+      "id": "bba1"
     }
   ]
 }
